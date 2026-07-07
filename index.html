@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>山口紗葵 様｜morich キャリアご提案</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #E60012;
+    --red-light: #fff0f0;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-900: #111827;
+    --blue-50: #eff6ff;
+    --blue-100: #dbeafe;
+    --blue-600: #2563eb;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: #f5f5f5; color: var(--gray-900); line-height: 1.75; }
+  header { background: #fff; border-bottom: 3px solid var(--red); padding: 14px 24px; display: flex; align-items: center; gap: 16px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+  header img { height: 38px; }
+  header .htxt p:first-child { font-size: 12px; color: var(--gray-500); }
+  header .htxt p:last-child { font-size: 17px; font-weight: 900; }
+  .nav-bar { background: var(--gray-900); padding: 0 12px; overflow-x: auto; white-space: nowrap; }
+  .nav-bar a { display: inline-block; padding: 13px 18px; color: #ccc; text-decoration: none; font-size: 12px; font-weight: 700; border-bottom: 3px solid transparent; transition: all 0.2s; }
+  .nav-bar a:hover { color: #fff; border-bottom-color: var(--red); }
+  main { max-width: 860px; margin: 0 auto; padding: 28px 14px 64px; }
+  .card { background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); margin-bottom: 40px; overflow: hidden; border-top: 5px solid var(--red); }
+  .card-inner { padding: 28px 28px 36px; }
+  .badges { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 14px; }
+  .badge { font-size: 11px; font-weight: 700; padding: 3px 12px; border-radius: 999px; border: 2px solid var(--red); color: var(--red); background: var(--red-light); }
+  .badge-blue { border-color: var(--blue-600); color: var(--blue-600); background: var(--blue-50); }
+  .co-name { font-size: clamp(22px, 5vw, 34px); font-weight: 900; line-height: 1.2; margin-bottom: 5px; }
+  .co-url { font-size: 12px; margin-bottom: 22px; }
+  .co-url a { color: var(--blue-600); text-decoration: none; }
+  .co-url a:hover { text-decoration: underline; }
+  .overview { background: var(--blue-50); border: 1px solid var(--blue-100); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .overview h3 { font-size: 10px; font-weight: 700; color: var(--blue-600); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 10px; }
+  .overview table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .overview tr { border-bottom: 1px solid var(--blue-100); }
+  .overview tr:last-child { border-bottom: none; }
+  .overview th { text-align: left; padding: 6px 14px 6px 0; color: var(--gray-600); font-weight: 700; width: 100px; vertical-align: top; white-space: nowrap; }
+  .overview td { padding: 6px 0; color: var(--gray-700); }
+  .highlight { background: var(--red-light); border: 2px solid var(--red); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .highlight h3 { font-size: 13px; font-weight: 900; color: var(--red); margin-bottom: 8px; }
+  .highlight p, .highlight li { font-size: 13px; color: #7a0000; margin-bottom: 4px; }
+  .highlight ul { padding-left: 16px; }
+  .accordion { margin-bottom: 16px; }
+  .acc-header { display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; padding: 12px 16px; background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 8px; user-select: none; transition: background 0.15s; }
+  .acc-header:hover { background: var(--gray-100); }
+  .acc-header .label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--red); border-left: 3px solid var(--red); padding-left: 8px; margin-bottom: 5px; display: block; }
+  .acc-preview { font-size: 12px; color: var(--gray-500); line-height: 1.6; }
+  .acc-header-left { flex: 1; }
+  .acc-icon { width: 28px; height: 28px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--gray-200); font-size: 13px; transition: transform 0.25s, background 0.2s; }
+  .acc-header.open .acc-icon { transform: rotate(180deg); background: var(--red); color: #fff; }
+  .acc-header.open { border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-bottom-color: transparent; }
+  .acc-body { display: none; padding: 20px 18px; border: 1px solid var(--gray-200); border-top: none; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .acc-body.open { display: block; }
+  .acc-body p { margin-bottom: 10px; }
+  .acc-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .acc-body li { margin-bottom: 6px; }
+  .job-wrap { border: 1px solid var(--gray-200); border-radius: 8px; overflow: hidden; margin-bottom: 16px; }
+  .job-header { background: var(--gray-900); color: #fff; padding: 14px 18px; display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; user-select: none; }
+  .job-title-text { font-size: 14px; font-weight: 900; margin-bottom: 3px; }
+  .job-preview { font-size: 11px; color: #aaa; line-height: 1.5; }
+  .job-icon { width: 26px; height: 26px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(255,255,255,0.15); font-size: 12px; transition: transform 0.25s; }
+  .job-header.open .job-icon { transform: rotate(180deg); }
+  .job-body { display: none; padding: 20px 18px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .job-body.open { display: block; }
+  .job-body p { margin-bottom: 10px; }
+  .job-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .job-body li { margin-bottom: 6px; }
+  .job-section { font-size: 11px; font-weight: 700; color: var(--red); text-transform: uppercase; letter-spacing: .06em; margin: 14px 0 6px; }
+  .tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-right: 5px; margin-bottom: 8px; }
+  .tag-must { background: var(--red); color: #fff; }
+  .tag-want { background: var(--gray-600); color: #fff; }
+  .meta-pills { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+  .pill { font-size: 12px; font-weight: 700; padding: 4px 11px; border-radius: 999px; background: var(--gray-100); color: var(--gray-700); border: 1px solid var(--gray-200); }
+  .section-label { font-size: 11px; font-weight: 700; color: var(--gray-500); text-transform: uppercase; letter-spacing: .08em; border-left: 3px solid var(--red); padding-left: 8px; margin: 22px 0 10px; }
+  .links { display: flex; flex-wrap: wrap; gap: 8px; }
+  .lbtn { display: inline-flex; align-items: center; gap: 5px; padding: 7px 14px; border-radius: 6px; background: var(--gray-900); color: #fff; font-size: 12px; font-weight: 700; text-decoration: none; transition: background 0.2s; }
+  .lbtn:hover { background: var(--red); }
+  .lbtn-out { background: transparent; color: var(--gray-900); border: 2px solid var(--gray-200); }
+  .lbtn-out:hover { background: var(--gray-900); color: #fff; border-color: var(--gray-900); }
+  footer { text-align: center; padding: 28px 16px; font-size: 11px; color: var(--gray-500); border-top: 1px solid var(--gray-200); background: #fff; }
+  @media(max-width:600px){ .card-inner{ padding: 18px 14px 24px; } .overview th { width: 80px; } }
+</style>
+</head>
+<body>
+<header>
+  <img src="morich_logo.jpg" alt="morich">
+  <div class="htxt">
+    <p>morich キャリアご提案資料</p>
+    <p>山口紗葵 様</p>
+  </div>
+</header>
+<nav class="nav-bar">
+  <a href="#k1">1. 楽天グループ株式会社</a>
+  <a href="#k2">2. 株式会社サイバーエージェント</a>
+  <a href="#k3">3. 合同会社DMM.com</a>
+  <a href="#k4">4. 横浜バニラ株式会社</a>
+</nav>
+<main>
+
+<div class="card" id="k1"><div class="card-inner">
+  <div class="badges"><span class="badge">チーフキャラクタービジネスプロデューサー</span><span class="badge badge-blue">東証プライム</span></div>
+  <div class="co-name">楽天グループ株式会社</div>
+  <div class="co-url"><a href="https://corp.rakuten.co.jp/" target="_blank">https://corp.rakuten.co.jp/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>〒158-0094 東京都世田谷区玉川一丁目14番1号</td></tr><tr><th>上場区分</th><td>東証プライム</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">国内最大級のインターネットショッピングモール「楽天市場」等を運営し、多岐にわたるサービスを自社で企画運営し成功に導いております。世界一のインターネット・サービス企業に向けてチャレンジを続けてきた同社は、今やインターネット業界の雄として日本のメディア産業の将来をも牽引する存在となりました。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>国内最大級のインターネットショッピングモール「楽天市場」等を運営し、多岐にわたるサービスを自社で企画運営し成功に導いております。世界一のインターネット・サービス企業に向けてチャレンジを続けてきた同社は、今やインターネット業界の雄として日本のメディア産業の将来をも牽引する存在となりました。</p><p>現在国際展開を急速に進めており、米国、アジア、ＥＵ圏の進出を加速しています。社内でも、急速にグローバル化が進んでおり、2012年から英語の全面導入を開始し、現在は、取締役会はもちろんのこと、各事業セクションごとの経営会議でも、資料・スピーチともに英語、毎週月曜朝8時から開かれる全社員を集めた「朝会」も英語で行われています。ここまで徹底している理由は、同社を本気で世界一のインターネット・サービス企業にする為、また同社が変われば他の会社にも影響を与え、日本の企業や一般家庭にも英語の必要性を訴求出来ると考えており、日本を代表する企業から世界を代表する企業へと変革を遂げようとしています。急速なグローバル化や幅広いサービスを運営している事もあり、他業種からの優秀な人材、モチベーションの高い人材が集い、強力な組織を築き上げています。</p><p><strong>▼主な事業</strong></p><ul><li>楽天市場事業：インターネットショッピングモール「楽天市場」の運営</li><li>ブックス事業：電子書籍の「kobo」、書籍販売サイト「楽天ブックス」などの運営</li><li>証券事業：インターネット証券取引サービス「楽天証券」の運営</li><li>クレジットカード事業：楽天カード</li><li>トラベル事業：インターネット総合旅行サイト「楽天トラベル」の運営</li><li>プロスポーツ事業：球団「東北楽天ゴールデンイーグルス」の運営　など</li></ul></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 プラットフォーム戦略統括部 顧客戦略部 コーポレート：チーフキャラクタービジネスプロデューサー（お買いものパンダ）</div>
+          <div class="job-preview">「お買いものパンダ」のキャラクタービジネス戦略をリードし、ライセンス・メディア・プロモーション・コラボ・AIなど多角的に推進するポジション。</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>【業務内容】</strong></p><p>「お買いものパンダ」のキャラクタービジネス戦略をリードするポジション。具体的には以下の業務を担当：</p><ul><li>ライセンス戦略の企画推進</li><li>メディアコンテンツの企画推進</li><li>リアルへのプロモーション展開</li><li>楽天ブランドや関連する人気スポーツIPとのコラボレーション（FCバルセロナ・楽天イーグルスなど）</li><li>ショッピング・金融・エンターテイメントまで70を超える楽天サービスとの協業</li><li>ファンイベントの企画推進</li><li>AIなど最新テクノロジーを活用したキャラクター進化の企画推進</li></ul><p><strong>【配属先】</strong></p><p>プラットフォーム戦略統括部 キャラクター開発部（約7名）。COO・副社長直轄のコーポレート組織に所属し、楽天グループ横断のエコシステム成長戦略・施策推進に携わる。</p><p><strong>【必須要件】</strong><span class='tag tag-must'>MUST</span></p><ul><li>IP・キャラクター関連で戦略企画、または事業企画の業務経験</li><li>事業計画の立案から実行までの業務経験</li><li>対マネジメントコミュニケーションスキル（グループ内外の部長以上）</li></ul><p><strong>【歓迎要件】</strong><span class='tag tag-want'>WANT</span></p><ul><li>事業会社の企画部門での業務経験</li><li>コンサルティング会社での業務経験</li><li>組織マネジメント経験</li><li>問題解決能力</li><li>プロジェクトマネジメントスキル</li><li>お買いものパンダへの興味関心を持ち、新たなビジネスを創造できる方</li><li>成果にコミットし、アクショナブルでインパクトの大きな企画を実現できる方</li><li>社会、企業、組織の将来を思い描き、進化させる意欲、リーダーシップのある方</li></ul><p><strong>【語学】</strong></p><ul><li>英語：中級（総合レベル2）</li><li>日本語：流暢（総合レベル4）</li></ul><p><strong>【求める人物像】</strong></p><ul><li>成果にコミットし、アクショナブルでインパクトの大きな企画を実現できる方</li><li>従来のキャラクタービジネスにはない発想やイノベーションを推進できる方</li><li>社会・企業・組織の将来を思い描き、進化させる意欲とリーダーシップのある方</li><li>チャレンジを楽しむマインドを持ち、不確実性の高い環境でも推進力を発揮できる方</li><li>社会や仲間、ステークホルダーへの貢献に喜びを感じられる方</li></ul>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏢 基本出社</span><span class="pill">❌ 副業不可</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://corp.rakuten.co.jp/" target="_blank">🏢 企業サイト</a></div>
+</div></div>
+
+<div class="card" id="k2"><div class="card-inner">
+  <div class="badges"><span class="badge">グローバルプランナー（企画担当）</span><span class="badge badge-blue">東証プライム</span></div>
+  <div class="co-name">株式会社サイバーエージェント</div>
+  <div class="co-url"><a href="https://www.cyberagent.co.jp/corporate/overview/" target="_blank">https://www.cyberagent.co.jp/corporate/overview/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都渋谷区宇田川町40番1号 Abema Towers</td></tr><tr><th>上場区分</th><td>東証プライム</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">実質、マーケティング・ＰＲ／広告事業のトップである石井さん（執行役員）直下で事業戦略やマーケティング戦略などの上流から課題解決する部隊を構築され精鋭がそろい始めてます。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>実質、マーケティング・ＰＲ／広告事業のトップである石井さん（執行役員）直下で事業戦略やマーケティング戦略などの上流から課題解決する部隊を構築され精鋭がそろい始めてます。</p><p>各インダストリー別に分かれており、DX文脈の課題や相談が多いようです。具体的なソリューションのデリバリーについては、子会社などと連携しながら実施していく感じになります。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 【CyberZ／広告代理事業部】グローバルプランナー（企画担当）</div>
+          <div class="job-preview">日本のエンタメコンテンツの海外進出を支援するグローバルマーケティング領域のプランナーポジション。戦略立案から広告運用まで一気通貫で担う。</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>【業務内容】</strong></p><p>CyberZでは、海外を含むグローバルマーケティング領域に対応する「プランナー（企画担当）」を募集しています。</p><p><strong>▼CyberZの海外代理店事業</strong></p><p>日本のエンタメコンテンツが海外へ進出する際のマーケティング支援をメインのミッションとし、戦略立案～広告運用まで一気通貫で担い、国内・海外のIP・コンテンツ特化を推進しております。デジタル広告の配信支援だけにとどまらず、オフラインの店舗への集客やイベントの企画・制作・プロデュース、さらには現地の文化や習慣に合わせたクリエイティブの最適化、現地のインフルエンサーをキャスティングしたプロモーションなど、非常に幅広い事業領域でサポートを行っています。本格始動してから約2年と、まだまだ0から1で事業を作りあげているフェーズとなり、ビジネスパーソンとして成長できる環境です。</p><p><strong>▼業務内容</strong></p><ul><li>コンペのリード：大型コンペを中心に、戦略立案から資料構成・プレゼンまでを主導。営業・クリエイティブ・制作を束ね、チームの総合力を引き出す</li><li>統合プロモーション戦略の立案：IPの世界観・ターゲットのインサイト・市場トレンドを掛け合わせ、「なぜこの施策か」を語れるストーリーのある戦略設計実施</li><li>統合メディアプランニング：デジタル広告（SNS・動画・運用型）からTVCM・OOH（屋外・交通広告）まで、最適なメディアミックスを設計</li><li>「体験」の企画・プロデュース：リアルイベント・ポップアップ・デジタルアクティベーションなど、ファンが熱狂する「体験価値」の企画</li><li>効果検証・次戦略へのフィードバック：ログ解析・定性定量調査・回帰分析等でROI検証</li></ul><p><strong>▼想定クライアント例</strong></p><ul><li>ゲーム</li><li>電子書籍</li><li>玩具メーカー</li><li>ショートドラマ／ライブ配信アプリ</li><li>アニメ、映画、ドラマ、舞台など制作会社</li></ul><p><strong>▼取り扱いメディア例</strong></p><ul><li>Google / Yahoo! / Meta (Facebook/Instagram) / X（旧Twitter）</li><li>IGN/Snap/Reddit/Twitchなど各ADNW</li><li>TikTok / YouTube / DSPなど全般</li><li>オフライン広告（雑誌、イベント、交通広告など）</li></ul><p><strong>▼CyberZが選ばれる理由</strong></p><p>エンタメ領域特化と、IPに関するユーザーインサイトを含めた深い理解は、CyberZが長年得意としてきた領域であり強みです。事業課題が多岐にわたるエンタメ領域において、イベントやポップアップを実施、現地のファンコミュニティを活性化するためにどうすればいいのかといったところまで一気通貫で幅広く支援し、提供できる体制があります。</p><p><strong>【必須要件】</strong><span class='tag tag-must'>MUST</span></p><ul><li>マーケティング・プロモーション領域での実務経験（3年経験目安）※広告代理店のみならず、事業会社、媒体社など不問</li></ul><p><strong>【歓迎要件】</strong><span class='tag tag-want'>WANT</span></p><ul><li>総合広告代理店でプランナーとして活躍されたご経験</li><li>マス、デジタル問わずマーケティング戦略を設計したご経験</li><li>デジタルマーケティング業務に従事したご経験</li><li>データを活用した市場分析、ターゲット分析を実施したのご経験</li></ul><p><strong>【求める人物像】</strong></p><ul><li>0→1から海外事業をディベロップさせ、組織の成長も見据えてアクションいただける方</li><li>論理的思考力とマーケティング視点を持ちながら、自ら課題を設定し解決に導ける方</li><li>国際的な視野で多様な価値観を尊重し、柔軟・前向きに対応できる方</li><li>チームビルディングに積極的で、メンバー育成への関心がある方</li><li>常に新しいチャレンジを楽しめる志向性を持っている方</li><li>コミュニケーション力が高く、クライアントとの関係構築をリードできる方</li></ul>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 ハイブリッド勤務</span><span class="pill">✅ 副業可</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://www.cyberagent.co.jp/corporate/overview/" target="_blank">🏢 企業サイト</a></div>
+</div></div>
+
+<div class="card" id="k3"><div class="card-inner">
+  <div class="badges"><span class="badge">IPコンテンツ戦略 事業開発リード</span><span class="badge badge-blue">未上場</span></div>
+  <div class="co-name">合同会社DMM.com</div>
+  <div class="co-url"><a href="https://dmm-corp.com/" target="_blank">https://dmm-corp.com/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>106-0032 東京都港区六本木三丁目2番1号住友不動産六本木グランドタワーDMMグループ総合受付24階</td></tr><tr><th>上場区分</th><td>未上場</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>強みは、DMMグループの豊富なリソースを最大限に活用できることです。大企業の安定感を持ちながらも、スタートアップのようなスピード感で事業を展開することができます。常識にとらわれない柔軟な発想と革新的な思考で、力強く非連続的な成長を実現できる環境です。</li><li>DMMのコアビジネスはアダルト領域で、現状では最大の領域ですが、今後はさらに一般領域への拡張を図り、プラットフォーム効果によりDMM経済圏全体でレバレッジしていく仕組みを作り、次の柱となるサービスを育てていきます。</li><li>今、DMMが力を入れているのは、まさに次の成長を生み出す仕組みづくりです。これまでの強みを活かしながら、エコシステムの構築・AIの活用・海外展開を軸に、次のステージへ進もうとしています。</li><li>いずれの業務においても、経営陣やステークホルダーと密に連携を取りつつ、ご自身の意志と志をベースに自発・自律的、能動的にアクションプランの策定から実行まで行っていただくことを期待されています。ご自身で手をあげれば領域・職域問わず主体的に関わることができ、自らキャリアを創れる文化です。</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">1998年の創業以来、多岐にわたる事業を展開し、現在は16領域60以上のサービスを運営しています。動画配信や電子書籍、アニメなどの多様なエンタメサービスに加え、3DプリントやEV充電などのハードウェア分野、web3やAIなど最先端のテクノロジーを取り入れた事業など、様々な事業を手掛けています。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>1998年の創業以来、多岐にわたる事業を展開し、現在は16領域60以上のサービスを運営しています。動画配信や電子書籍、アニメなどの多様なエンタメサービスに加え、3DプリントやEV充電などのハードウェア分野、web3やAIなど最先端のテクノロジーを取り入れた事業など、様々な事業を手掛けています。</p><p>総合サービスサイト「DMM.com」は会員数4,507万人。2022年にはサブスクリプション会員システムの「DMMプレミアム」を立ち上げ、あらゆるエンタメ体験をシームレスにつなぐ「マルチエンタメ・プラットフォーム」の創造を目指しています。</p><p>主には動画配信事業・FX/証券事業・オンラインゲームの3つがDMMの収益を支える柱となっていて、今後も新たな柱となる収益源を作る為、新規事業開発や既存事業の再建を進めています。事業のさらなる拡大に向け、今後複数立ち上げていく新規事業や既存事業の拡大を経営視点で管理・運営を行っていただける方を積極的に採用されています。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 IPコンテンツ戦略 事業開発リード／事業開発室</div>
+          <div class="job-preview">DMMのIP・コンテンツ資産を最大化するため、IPアライアンス・ライセンス・商品企画・グローバル展開を横断的に設計し、事業開発と組織成長を両輪でドライブするリードポジション。</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>【業務内容】</strong></p><p>DMMのIP・コンテンツ資産を最大化するため、IPアライアンス・ライセンス・商品企画・グローバル展開を横断的に設計し、事業開発と組織成長を両輪でドライブします。</p><ul><li>国内外IPホルダーとのアライアンス戦略立案・交渉・契約推進</li><li>IPライセンスイン／アウト戦略の設計および実行</li><li>IPを起点とした新規事業・商品企画・MD戦略の構築</li><li>グローバル市場向けIP展開戦略の立案</li><li>社内事業部横断プロジェクトの推進</li><li>IP事業組織の立ち上げ・拡張に伴うチームマネジメント</li></ul><p>※具体的な担当領域はご経験に応じて柔軟に設計します。</p><p><strong>【必須経験・スキル】</strong><span class='tag tag-must'>MUST</span></p><ul><li>IP・ライツ・コンテンツビジネス領域での実務経験（アライアンス、ライセンス、商品企画、MD、事業開発いずれか）</li><li>国内外パートナーとの事業スキーム構築・契約交渉経験</li><li>事業収益モデル設計・P/L管理、もしくはそれに準ずる経験</li><li>1→10フェーズの事業・組織拡張におけるマネジメント経験（少人数チームの立ち上げ、機能設計、人材採用・育成を含む）</li><li>日本語ネイティブレベル</li></ul><p><strong>【歓迎スキル】</strong><span class='tag tag-want'>WANT</span></p><ul><li>アニメ・ゲーム・同人・エンタメ領域でのIPビジネス経験</li><li>海外市場向けコンテンツ展開・ローカライズ・配信経験</li><li>英語または中国語でのビジネス交渉経験</li><li>大型IP案件の立ち上げ・グロース経験</li></ul><p><strong>【求める人物像】</strong></p><ul><li>IPビジネスを「作品」ではなく「再現性ある事業」として設計できる方</li><li>パートナー・社内双方の利害を調整し、合意形成をリードできる方</li><li>不確実性の高い環境でも意思決定し、組織を前に進められる方</li><li>自ら手を動かしながら、チームを拡張していける方</li></ul>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 ハイブリッド勤務</span><span class="pill">✅ 副業可</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://dmm-corp.com/" target="_blank">🏢 企業サイト</a></div>
+</div></div>
+
+<div class="card" id="k4"><div class="card-inner">
+  <div class="badges"><span class="badge">CMO／ブランドマネージャー</span><span class="badge badge-blue">未上場</span></div>
+  <div class="co-name">横浜バニラ株式会社</div>
+  <div class="co-url"><a href="https://yokohamavanilla.com/" target="_blank">https://yokohamavanilla.com/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>〒220-0072 神奈川県横浜市西区浅間町1丁目4番3号 ウィザードビル402</td></tr><tr><th>上場区分</th><td>未上場</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>単なるスイーツ会社ではなく、「マーケティングを得意としたブランド会社」を目指しています。</li><li>2029年9月のIPOを目指しており、シリーズAで4.2億円を調達済みです。</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">「横浜に来たら、横浜バニラ」——この言葉が、いずれ全国の旅人の常識になる日を、私たちは確信しています。横浜バニラ株式会社は2024年10月、元人気アイドルグループ・HiHi Jetsのメンバーとして9年間芸能界を駆け抜けた髙橋優斗氏が、「生まれ育った大好きな横浜をもっと多くの人に好きになってほしい」という純粋な想いだけを胸に創業したスタートアップです。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>「横浜に来たら、横浜バニラ」——この言葉が、いずれ全国の旅人の常識になる日を、私たちは確信しています。横浜バニラ株式会社は2024年10月、元人気アイドルグループ・HiHi Jetsのメンバーとして9年間芸能界を駆け抜けた髙橋優斗氏が、「生まれ育った大好きな横浜をもっと多くの人に好きになってほしい」という純粋な想いだけを胸に創業したスタートアップです。旧社名「YX factory」からスタートし、2025年1月に「横浜バニラ株式会社」へ商号を変更。同年2月、フラッグシップ商品「塩バニラフィナンシェ」を横浜高島屋で初販売した初日、なんとギネス世界記録「12時間で販売されたフィナンシェの最多個数」を樹立。事前告知なしでの挑戦にこだわったというこのエピソードが、同社の「本物の熱量」を象徴しています。</p><p>直近のビッグトピックとして、2025年8月にはジャフコグループとXTech Venturesを引受先とするシリーズAで約3億7,000万円の資金調達を実施。第2期（2025年10月〜）は「前期比6倍の売上成長」を掲げ、COO採用・新商品開発・製造設備投資・全国ポップアップ展開をフルスロットルで加速中です。さらに日経クロストレンド「未来の市場をつくる100社【2026年版】」にも選出され、業界からの注目度は急上昇しています。</p><p>ミッション「美味しい！楽しい！嬉しい！を世界へ贈り届ける」、ビジョン「幸せ製造最強チーム」が示す通り、ここは数字だけを追う会社ではありません。メンバー全員が「横浜を世界に誇れる街にしたい」という共通の夢を持ち、熱量高く仕事に向き合える環境です。設立間もないスタートアップだからこそ、あなたのアイデアや行動がダイレクトにブランドの歴史を作ります。「100年後も愛される横浜の新定番ギフト」を一緒に創り上げたい方に、これ以上ない舞台です。</p><p><strong>・代表取締役社長CEO 髙橋優斗氏</strong></p><p>1999年11月15日生まれ、神奈川県横浜市出身。2015年から芸能事務所（STARTO ENTERTAINMENT）に所属し、男性アイドルグループ・HiHi Jetsのメンバーとしてテレビ・舞台・コンサートなどで幅広く活躍。2024年10月に退所し、地元横浜への熱い想いを原動力にYX factory株式会社（現・横浜バニラ株式会社）を設立、代表取締役社長CEOに就任。当初は「名刺の渡し方もビジネスメールの書き方も分からなかった」と語るほど経営の素人からスタートしたが、商品パッケージのロゴを何度もやり直し、商品名を自ら手書きで練習するなどブランドの細部まで魂を込めて作り上げた。「一度きりの人生、強いオーナーシップを持ち圧倒的に突き抜けたい」という信念のもと、創業わずか1年でギネス記録達成・シリーズA調達・日経クロストレンド選出を実現した、横浜が生んだ次世代起業家。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 CMO（マーケティング責任者）／ブランドマネージャー</div>
+          <div class="job-preview">ブランド戦略を牽引するマーケティング責任者として、商品企画から販売戦略まで一気通貫で担い、将来的には新規事業全体を統括する経営に近い中核ポジション。</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>【業務内容】</strong></p><p>事業拡大に伴い、ブランド戦略を牽引するマーケティング責任者を募集します。将来的には新規事業全体を統括いただくことも期待している、経営に近い中核ポジションです。ブランドのマーケティング戦略立案から商品企画、販売戦略まで一気通貫で担っていただきます。</p><ul><li>市場分析・マーケットリサーチ</li><li>商品企画・ブランド戦略の立案</li><li>プロダクト開発の推進</li><li>EC・店舗・卸など販売チャネルごとの販売戦略設計</li><li>ブランドコミュニケーションの企画・実行</li><li>売上・利益最大化に向けたマーケティング施策の推進</li><li>将来的には新規事業全体の統括</li></ul><p>単なる認知拡大ではなく、「どうすれば商品が売れるか」を設計し、ブランドを育てていくことがミッションです。</p><p><strong>【求める人物像】</strong></p><ul><li>カオスな環境を楽しめる方</li><li>プレイヤーとして率先して行動できる方</li><li>ブランドをゼロから育てたい方</li><li>経営視点を持ち、事業づくりに携わりたい方</li></ul>
+        <div class="meta-pills"><span class="pill">📍 神奈川・千葉・埼玉</span><span class="pill">🏢 基本出社</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://yokohamavanilla.com/" target="_blank">🏢 企業サイト</a><a class="lbtn lbtn-out" href="https://youtu.be/mjNvQvdAIWY?si=bDdr9nnlQqy4IXRa" target="_blank">📺 TBSインタビュー動画</a><a class="lbtn lbtn-out" href="https://youtrust.jp/studio/articles/yokohamavanilla_3" target="_blank">📺 YOUTRUST動画</a><a class="lbtn lbtn-out" href="https://youtu.be/t-e0e5a5ijY?si=XCiAR1JJCzVEB6Cw" target="_blank">📺 DeNA南場さんとの対談</a></div>
+</div></div>
+</main>
+<footer>
+  <p>本資料はmorichが山口紗葵 様のためにご用意した個人情報を含む機密資料です。無断転用・転載はご遠慮ください。</p>
+  <p style="margin-top:6px;">© 株式会社morich</p>
+</footer>
+<script>
+  function toggleAcc(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+  function toggleJob(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
